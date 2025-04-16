@@ -1,17 +1,18 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useAuth } from '../contexts/AuthContext';
 import { RootStackParamList } from '../types/navigation';
 
 // Screens
-import AdminDashboardScreen from '../screens/AdminDashboardScreen';
-import CreateAppointmentScreen from '../screens/CreateAppointmentScreen';
-import DoctorDashboardScreen from '../screens/DoctorDashboardScreen';
-import HomeScreen from '../screens/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
-import PatientDashboardScreen from '../screens/PatientDashboardScreen';
-import ProfileScreen from '../screens/ProfileScreen';
 import RegisterScreen from '../screens/RegisterScreen';
+import HomeScreen from '../screens/HomeScreen';
+import CreateAppointmentScreen from '../screens/CreateAppointmentScreen';
+import ProfileScreen from '../screens/ProfileScreen';
+import AdminDashboardScreen from '../screens/AdminDashboardScreen';
+import DoctorDashboardScreen from '../screens/DoctorDashboardScreen';
+import PatientDashboardScreen from '../screens/PatientDashboardScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
