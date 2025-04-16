@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
-import styled from 'styled-components/native';
-import { ScrollView, ViewStyle, TextStyle } from 'react-native';
-import { Button, ListItem, Text } from 'react-native-elements';
-import { useAuth } from '../contexts/AuthContext';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { useFocusEffect } from '@react-navigation/native';
-import { RootStackParamList } from '../types/navigation';
-import theme from '../styles/theme';
-import Header from '../components/Header';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import React, { useState } from 'react';
+import { ScrollView, TextStyle, ViewStyle } from 'react-native';
+import { Button, ListItem } from 'react-native-elements';
+import styled from 'styled-components/native';
+import Header from '../components/Header';
+import { useAuth } from '../contexts/AuthContext';
+import theme from '../styles/theme';
+import { RootStackParamList } from '../types/navigation';
 
 type UserManagementScreenProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'UserManagement'>;
@@ -90,7 +89,7 @@ const UserManagementScreen: React.FC = () => {
 
         <Button
           title="Adicionar Novo Usuário"
-          onPress={() => {}}
+          onPress={() => { }}
           containerStyle={styles.button as ViewStyle}
           buttonStyle={styles.buttonStyle}
         />
@@ -117,7 +116,7 @@ const UserManagementScreen: React.FC = () => {
                 <ButtonContainer>
                   <Button
                     title="Editar"
-                    onPress={() => {}}
+                    onPress={() => { }}
                     containerStyle={styles.actionButton as ViewStyle}
                     buttonStyle={styles.editButton}
                   />

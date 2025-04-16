@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
-import styled from 'styled-components/native';
-import { ScrollView, ViewStyle, TextStyle } from 'react-native';
-import { Button, ListItem, Text } from 'react-native-elements';
-import { useAuth } from '../contexts/AuthContext';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { useFocusEffect } from '@react-navigation/native';
-import { RootStackParamList } from '../types/navigation';
-import theme from '../styles/theme';
-import Header from '../components/Header';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import React, { useState } from 'react';
+import { ScrollView, TextStyle, ViewStyle } from 'react-native';
+import { Button, ListItem, Text } from 'react-native-elements';
+import styled from 'styled-components/native';
+import Header from '../components/Header';
+import { useAuth } from '../contexts/AuthContext';
+import theme from '../styles/theme';
+import { RootStackParamList } from '../types/navigation';
 
 type AdminDashboardScreenProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'AdminDashboard'>;
@@ -298,4 +297,4 @@ const ButtonContainer = styled.View`
   margin-top: 8px;
 `;
 
-export default AdminDashboardScreen; 
+export default AdminDashboardScreen;

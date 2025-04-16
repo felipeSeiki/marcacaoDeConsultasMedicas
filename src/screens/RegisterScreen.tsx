@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import styled from 'styled-components/native';
-import { Input, Button, Text } from 'react-native-elements';
-import { useAuth } from '../contexts/AuthContext';
-import theme from '../styles/theme';
-import { ViewStyle } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import React, { useState } from 'react';
+import { ViewStyle } from 'react-native';
+import { Button, Input } from 'react-native-elements';
+import styled from 'styled-components/native';
+import { useAuth } from '../contexts/AuthContext';
+import theme from '../styles/theme';
 import { RootStackParamList } from '../types/navigation';
 
 type RegisterScreenProps = {
@@ -49,7 +49,7 @@ const RegisterScreen: React.FC = () => {
   return (
     <Container>
       <Title>Cadastro de Paciente</Title>
-      
+
       <Input
         placeholder="Nome completo"
         value={name}

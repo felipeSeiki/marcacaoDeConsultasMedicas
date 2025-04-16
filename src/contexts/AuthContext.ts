@@ -1,7 +1,7 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { authService } from '../services/auth';
-import { User, LoginCredentials, RegisterData, AuthContextData } from '../types/auth';
+import { AuthContextData, LoginCredentials, RegisterData, User } from '../types/auth';
 
 // Chaves de armazenamento
 const STORAGE_KEYS = {
@@ -75,9 +75,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, signIn, register, signOut }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value= {{ user, loading, signIn, register, signOut }
+}>
+  { children }
+  < /AuthContext.Provider>
   );
 };
 

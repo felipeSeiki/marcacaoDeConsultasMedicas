@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from 'styled-components/native';
 import { ViewStyle } from 'react-native';
-import { ListItem, Avatar } from 'react-native-elements';
+import { Avatar, ListItem } from 'react-native-elements';
+import styled from 'styled-components/native';
 import theme from '../styles/theme';
 interface Doctor {
   id: string;
