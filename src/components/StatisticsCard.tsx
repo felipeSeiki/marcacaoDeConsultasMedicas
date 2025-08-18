@@ -5,7 +5,7 @@ import theme from '../styles/theme';
 
 interface StatisticsCardProps {
     title: string;
-    value: string | number;
+    value: string | number | undefined;
     subtitle?: string;
     color?: string;
     icon?: React.ReactNode;
