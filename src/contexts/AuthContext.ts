@@ -73,12 +73,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       console.error('Erro ao fazer logout:', error);
     }
   };
+  const updateUser = async (updatedUser: User) => {
+    try {
+      setUser(updatedUser);
+      await AsyncStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(updatedUser));
+    } catch (error) {
+      console.error('Erro ao atualizar usuário:', error);
+      throw error;
+    }
+  };
 
-  return (
-    <AuthContext.Provider value= {{ user, loading, signIn, register, signOut }
-}>
-  { children }
-  < /AuthContext.Provider>
+ return (
+    <AuthContext.Provider value={{ user, loading, signIn, register, signOut, updateUser }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 
