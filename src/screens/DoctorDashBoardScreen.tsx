@@ -153,9 +153,9 @@ const DoctorDashboardScreen: React.FC = () => {
         )}
 
         <SectionTitle>Especialidades Mais Procuradas</SectionTitle>
-        {statistics && Object.entries(statistics.specialties).length > 0 && (
+        {statistics && Object.entries(statistics.specialties ?? {}).length > 0 && (
           <SpecialtyContainer>
-            {Object.entries(statistics.specialties)
+            {Object.entries(statistics.specialties ?? {})
               .sort(([,a], [,b]) => b - a)
               .slice(0, 3)
               .map(([specialty, count]) => (
