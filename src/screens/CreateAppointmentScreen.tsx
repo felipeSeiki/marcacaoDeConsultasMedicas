@@ -11,6 +11,7 @@ import TimeSlotList from '../components/TimeSlotList';
 import { useAuth } from '../contexts/AuthContext';
 import theme from '../styles/theme';
 import { RootStackParamList } from '../types/navigation';
+import { notificationService } from '../services/notifications';
 
 type CreateAppointmentScreenProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'CreateAppointment'>;
@@ -110,6 +111,9 @@ const CreateAppointmentScreen: React.FC = () => {
 
       // Salva lista atualizada
       await AsyncStorage.setItem('@MedicalApp:appointments', JSON.stringify(appointments));
+
+      // Envia notificação para o médico
+      await notificationService.notifyNewAppointment(selectedDoctor.id, newAppointment);
 
       alert('Consulta agendada com sucesso!');
       navigation.goBack();
