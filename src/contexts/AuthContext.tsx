@@ -1,7 +1,8 @@
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, { createContext, useContext, useEffect, useState } from 'react';
 import { authService } from '../services/auth';
-import { AuthContextData, LoginCredentials, RegisterData, User } from '../types/auth';
+import { imageService } from '../services/imageService';
+import { User, LoginCredentials, RegisterData, AuthContextData } from '../types/auth';
 
 // Chaves de armazenamento
 const STORAGE_KEYS = {
@@ -24,6 +25,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       const storedUser = await authService.getStoredUser();
       if (storedUser) {
+        // Tenta carregar a imagem de perfil salva localmente
+        const savedImage = await imageService.getUserProfileImage(storedUser.id);
+        if (savedImage) {
+          storedUser.image = savedImage;
+        }
         setUser(storedUser);
       }
     } catch (error) {
@@ -44,6 +50,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const signIn = async (credentials: LoginCredentials) => {
     try {
       const response = await authService.signIn(credentials);
+
+      // Tenta carregar a imagem de perfil salva localmente
+      const savedImage = await imageService.getUserProfileImage(response.user.id);
+      if (savedImage) {
+        response.user.image = savedImage;
+      }
+
       setUser(response.user);
       await AsyncStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(response.user));
       await AsyncStorage.setItem(STORAGE_KEYS.TOKEN, response.token);
@@ -73,6 +86,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       console.error('Erro ao fazer logout:', error);
     }
   };
+
   const updateUser = async (updatedUser: User) => {
     try {
       setUser(updatedUser);
@@ -83,7 +97,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
- return (
+  return (
     <AuthContext.Provider value={{ user, loading, signIn, register, signOut, updateUser }}>
       {children}
     </AuthContext.Provider>
