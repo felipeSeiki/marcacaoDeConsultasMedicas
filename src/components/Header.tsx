@@ -3,6 +3,7 @@ import { Avatar } from 'react-native-elements';
 import styled from 'styled-components/native';
 import { useAuth } from '../contexts/AuthContext';
 import theme from '../styles/theme';
+import NotificationBell from './NotificationBell';
 
 export const HeaderContainer = styled.View`
   background-color: ${theme.colors.background};
@@ -36,6 +37,7 @@ const Header: React.FC = () => {
           <UserName>{user.name}</UserName>
         </TextContainer>
       </UserInfo>
+      <NotificationBell />
     </Container>
   );
 };
